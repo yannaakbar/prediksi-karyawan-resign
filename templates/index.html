@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Prediksi Karyawan Resign</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+
+    <link href={{ url_for('static', filename="img/favicon.png" ) }} rel="icon">
+    <link href={{ url_for('static', filename="img/apple-touch-icon.png" ) }} rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href={{ url_for('static', filename="vendor/aos/aos.css" ) }} rel="stylesheet">
+    <link href={{ url_for('static', filename="vendor/bootstrap/css/bootstrap.min.css" ) }} rel="stylesheet">
+    <link href={{ url_for('static', filename="vendor/bootstrap-icons/bootstrap-icons.css" ) }} rel="stylesheet">
+    <link href={{ url_for('static', filename="vendor/boxicons/css/boxicons.min.css" ) }} rel="stylesheet">
+    <link href={{ url_for('static', filename="vendor/glightbox/css/glightbox.min.css" ) }} rel="stylesheet">
+    <link href={{ url_for('static', filename="vendor/remixicon/remixicon.css" ) }} rel="stylesheet">
+    <link href={{ url_for('static', filename="vendor/swiper/swiper-bundle.min.css" ) }} rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href={{ url_for('static', filename="css/style.css" ) }} rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center">
+
+            <h1 class="logo me-auto"><a href="index.html">Prediksi Karyawan Resign</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <p class="name me-auto"><a href="index.html">Aa Yana Maulana Akbar</a></p> -->
+
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <div class="logo">
+                        <ul>
+                            <li><a class="getstarted scrollto" href="#about">Aa Yana Maulana Akbar <img src={{
+                                        url_for('static', filename="img/me.jpg" ) }} alt=""
+                                        class="img-fluid rounded-circle"> </a></li>
+                        </ul>
+                    </div>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="section-title col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-12"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+                        <form action="/predict" method="post">
+                            <div class="row">
+                                <!-- Input Lama Bekerja (Tahun) -->
+                                <div class="col-md-6 my-3">
+                                    <label for="lama_bekerja" class="form-label" style="color: #fff;">Lama Kerja</label>
+                                    <input placeholder="( tahun )" type="number" name="lama_bekerja" class="form-control" id="lama_bekerja"
+                                        required>
+                                </div>
+                                <!-- End of Input Lama Bekerja (Tahun) -->
+
+                                <!-- Input Jam Kerja Perbulan -->
+                                <div class="col-md-6 my-3">
+                                    <label for="jam_kerja_perbulan" class="form-label" style="color: #fff;">Jam Kerja</label>
+                                    <input placeholder="( Per Bulan )"type="number" name="jam_kerja_perbulan" class="form-control"
+                                        id="jam_kerja_perbulan" required>
+                                </div>
+                                <!-- End of Input Jam Kerja Perbulan -->
+                            </div>
+
+                            <div class="row">
+                                <!-- Input Kecelakaan Kerja -->
+                                <div class="col-md-6 my-3">
+                                    <p class="mb-0" style="color: #fff;">Kecelakaan Kerja</p>
+                                    <input class="form-check-input" name="is_pernah_kecelakaan_kerja" type="radio"
+                                        value="1" id="pernah" required>
+                                    <label class="form-check-label mr-5" for="pernah" style="color: #fff;">
+                                        Pernah
+                                    </label>
+                                    <input class="form-check-input" name="is_pernah_kecelakaan_kerja" type="radio"
+                                        value="0" id="tidak_pernah">
+                                    <label class="form-check-label" for="tidak_pernah" style="color: #fff;">
+                                        Tidak
+                                    </label>
+                                </div>
+                                <!-- End of Kecelakaan Kerja -->
+                                <div class="col-md-6 my-3">
+                                    <!-- Input Kategori Gaji -->
+                                    <label for="kategori_gaji" style="color: #fff;">Kategori Gaji</label>
+                                    <select class="form-select mb-3" name="kategori_gaji" id="kategori_gaji" required>
+                                        <option value="" selected disabled>Pilih salah satu</option>
+                                        <option value="0">Low</option>
+                                        <option value="1">Middle</option>
+                                        <option value="2">High</option>
+                                    </select>
+                                    <!-- End of Input Kategori Gaji -->
+                                </div>
+
+                            </div>
+
+                            <!--  Tingkat Kepuasan  -->
+                            <label for="tingkat_kepuasan" class="form-label" style="color: #fff;">Tingkat Kepuasan</label>
+                            <input type="range" name="tingkat_kepuasan" class="form-range" id="tingkat_kepuasan" min="0"
+                                max="110" required>
+                            <div class="d-flex justify-content-between">
+                                <p style="color: #fff;">0</p>
+                                <p style="color: #fff;">100</p>
+                            </div>
+                            <!--  Tingkat Kepuasan  -->
+
+                            <!-- Button Submit -->
+                            <div class="text-center">
+                                <button type="submit" class="cta-btn align-middle">Prediksi</button>
+                            </div>
+                            <!-- End of Button Submit -->
+                        </form>
+                    </div>
+
+                </div>
+                <div class="section-title col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-12"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <h1>Hasil Prediksi</h1>
+                    {% if hasil_prediksi %}
+                    <h2>Karyawan tersebut diprediksi<h1> {{nilai_kepercayaan}}% {{hasil_prediksi}} </h1>
+                    </h2>
+                    {% endif %}
+                    <div class="d-flex justify-content-center justify-content-lg-start">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </section>
+
+    <main id="main">
+
+
+        <section id="clients" class="clients section-bg">
+            <div class="container">
+
+                <div class="row" data-aos="zoom-in">
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                        <img src={{ url_for('static', filename="img/orbit.png" ) }} class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                        <img src={{ url_for('static', filename="img/kampus-merdeka.png" ) }} class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                        <img src={{ url_for('static', filename="img/msib.png" ) }} class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                        <img src={{ url_for('static', filename="img/msib.png" ) }} class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                        <img src={{ url_for('static', filename="img/kampus-merdeka.png" ) }} class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                        <img src={{ url_for('static', filename="img/orbit.png" ) }} class="img-fluid" alt="">
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+
+        </div>
+    </footer><!-- End Footer -->
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src={{ url_for('static', filename="vendor/aos/aos.js" ) }}></script>
+    <script src={{ url_for('static', filename="vendor/bootstrap/js/bootstrap.bundle.min.js" ) }}></script>
+    <script src={{ url_for('static', filename="vendor/glightbox/js/glightbox.min.js" ) }}></script>
+    <script src={{ url_for('static', filename="vendor/isotope-layout/isotope.pkgd.min.js" ) }}></script>
+    <script src={{ url_for('static', filename="vendor/swiper/swiper-bundle.min.js" ) }}></script>
+    <script src={{ url_for('static', filename="vendor/waypoints/noframework.waypoints.js" ) }}></script>
+    <script src={{ url_for('static', filename="vendor/php-email-form/validate.js" ) }}></script>
+
+    <!-- Template Main JS File -->
+    <script src={{ url_for('static', filename="js/main.js" ) }}></script>
+
+</body>
+
+</html>
